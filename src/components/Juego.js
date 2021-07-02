@@ -73,7 +73,7 @@ export const Juego = props => {
                 </div>
             </div>
             <div className="timer">Time Remaining: {secondsLeft}</div>
-              <ListaDeUsuario nuevosJugador={props.nuevoJugador}></ListaDeUsuario>          
+                       
         </div>
     );
 };

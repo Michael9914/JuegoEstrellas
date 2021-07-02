@@ -4,6 +4,7 @@ import { Juego } from './components/Juego';
 import { Sesion } from './components/Sesion';
 import './App.css';
 import { Usuarios } from './components/Usuarios';
+import { ListaDeUsuario } from './components/ListaDeUsuario';
 
 
 const Inicio = () => {
@@ -11,7 +12,7 @@ const Inicio = () => {
   const [logeado, setLogeado] = useState(false)
   const [nuevoJugador, setNuevoJugador] = useState(Usuarios)
   const añadirJugador = (jugador) => {
-    setNuevoJugador([...Usuarios, jugador])
+    setNuevoJugador([...nuevoJugador, jugador])
     console.log(nuevoJugador);
     setLogeado(true)
   }
@@ -20,14 +21,20 @@ const Inicio = () => {
   <>
     {
       logeado === true ? (
-        <Juego key={gameId} startNewGame={() => setGameId(gameId + 1)} 
-        nuevoJugador= {nuevoJugador} onSumbited={añadirJugador}/>
+        <Juego key={gameId} 
+        startNewGame={() => setGameId(gameId + 1)} 
+        nuevoJugador= {nuevoJugador} 
+        
+        setLogeado={setLogeado}/>
       
       ) :(
-      <Sesion setLogeado={setLogeado}
+      <Sesion handleSubmited = {añadirJugador}
       ></Sesion>
     ) 
   }
+  <div>
+  <ListaDeUsuario nuevoJugador = {nuevoJugador}></ListaDeUsuario>
+  </div>
   </>
   
   );
