@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { utils } from "./Utils";
 
-export const useGameState = timeLimit => {
-    const [stars, setStars] = useState(utils.random(1, 9));
-    const [availableNums, setAvailableNums] = useState(utils.range(1, 9));
+export const useGameState = estrella => {
+    const [stars, setStars] = useState(utils.random(1, estrella));
+    const [availableNums, setAvailableNums] = useState(utils.range(1, estrella));
     const [candidateNums, setCandidateNums] = useState([]);
     const [secondsLeft, setSecondsLeft] = useState(10);
 
@@ -21,7 +21,7 @@ export const useGameState = timeLimit => {
             const newAvailableNums = availableNums.filter(
                 n => !newCandidateNums.includes(n)
             );
-            setStars(utils.randomSumIn(newAvailableNums, 9));
+            setStars(utils.randomSumIn(newAvailableNums, estrella));
             setAvailableNums(newAvailableNums);
             setCandidateNums([]);
         }

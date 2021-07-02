@@ -1,3 +1,4 @@
+  
 import React from 'react';
 import { useState } from 'react';
 import { Juego } from './components/Juego';
@@ -10,11 +11,18 @@ import { ListaDeUsuario } from './components/ListaDeUsuario';
 const Inicio = () => {
   const [gameId, setGameId] = useState(1);
   const [logeado, setLogeado] = useState(false)
+  
   const [nuevoJugador, setNuevoJugador] = useState(Usuarios)
+  
+  const [nuevaEstrella, setNuevaEstrella] = useState(0)
+
   const añadirJugador = (jugador) => {
     setNuevoJugador([...nuevoJugador, jugador])
-    console.log(nuevoJugador);
+    //console.log(nuevoJugador);
     setLogeado(true)
+  }
+  const añadirEstrellas = (cantidad) =>{
+    setNuevaEstrella(cantidad)
   }
   return( 
 
@@ -24,16 +32,18 @@ const Inicio = () => {
         <Juego key={gameId} 
         startNewGame={() => setGameId(gameId + 1)} 
         nuevoJugador= {nuevoJugador} 
-        
-        setLogeado={setLogeado}/>
+        estrella ={nuevaEstrella}
+        setLogeado={setLogeado}
+        onSubmit={añadirJugador}/>
       
       ) :(
       <Sesion handleSubmited = {añadirJugador}
+              handleStars = {añadirEstrellas}
       ></Sesion>
     ) 
   }
   <div>
-  <ListaDeUsuario nuevoJugador = {nuevoJugador}></ListaDeUsuario>
+  <ListaDeUsuario nuevoJugador = {nuevoJugador} className="userName"></ListaDeUsuario>
   </div>
   </>
   

@@ -1,6 +1,18 @@
 import React from 'react';
+import { useEffect } from 'react';
 
-export const Reiniciar = props => (
+export const Reiniciar = props => {
+    const jugador ={}
+    useEffect(() => {
+        jugador.usuario = props.nuevoJugador
+        if(props.gameStatus === 'lost'){
+            jugador.puntuacion = 0
+        }else{
+            jugador.puntuacion = 1
+        }
+        props.onSubmit(jugador)
+    },[])
+    return(
     <div className="game-done">
         <div
             className="message"
@@ -8,6 +20,7 @@ export const Reiniciar = props => (
         >
             {props.gameStatus === 'lost' ? 'Game Over' : 'Nice'}
         </div>
-        <button onClick={props.onClick}>Play Again</button>
+        <button className="button2" onClick={props.onClick}>Jugar de nuevo</button>
     </div>
-);
+    );
+}

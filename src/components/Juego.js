@@ -4,8 +4,6 @@ import { Reiniciar } from './Reiniciar';
 import { useGameState } from './Estado';
 import { Empezar } from './Empezar';
 import { utils } from './Utils';
-import { Formulario } from './Formulario';
-import { ListaDeUsuario } from './ListaDeUsuario';
 
 
 
@@ -16,7 +14,7 @@ export const Juego = props => {
         candidateNums,
         secondsLeft,
         setGameState,
-    } = useGameState();
+    } = useGameState(props.estrella);
 
     const candidatesAreWrong = utils.sum(candidateNums) > stars;
     const gameStatus = availableNums.length === 0
@@ -56,13 +54,13 @@ export const Juego = props => {
             <div className="body">
                 <div className="left">
                     {gameStatus !== 'active' ? (
-                        <Reiniciar onClick={props.startNewGame} gameStatus={gameStatus} />
+                        <Reiniciar onClick={props.startNewGame} gameStatus={gameStatus} onSubmit={props.onSubmit}/>
                     ) : (
                         <Empezar count={stars} />
                     )}
                 </div>
                 <div className="right">
-                    {utils.range(1, 9).map(number => (
+                    {utils.range(1, props.estrella).map(number => (
                         <Numeros
                             key={number}
                             status={numberStatus(number)}

@@ -1,54 +1,51 @@
+  
 import React, { useState } from 'react'
 
-/* export const Sesion = (props) => {
 
-    const [usuario, setUsuario] = useState("")
+export const Sesion = ({ handleSubmited,handleStars}) => {
 
-    const handleSubmit = () => {
-       props.setLogeado(true) 
-    }
-    return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <input value={usuario}
-                 onChange={e=>setUsuario(e.target.value)}>
+   const [usuario, setUsuario] = useState('')
 
-                 </input>
-                 <button>Agregar</button>
-                 
-            </form>
-        </div>
-    )
-} */
+   let jugador ={};
+   
+   const [estrella, setEstrella] = useState(0)
 
+   const handleSubmit = (e) => {
+       e.preventDefault()
+       jugador.usuario=usuario
+       jugador.puntuacion=0
+       handleSubmited(jugador)
+       handleStars(estrella)
+   }
+   return (
+       <div>
+           <center>
+           <form onSubmit={handleSubmit}>
+               <h1 className="h1">Ingrese su usuario</h1>
+               <input
+               className="input"
+                 id=""
+                 label="Ingrese usuario"
+                 value ={usuario}
+                 onChange = {e => setUsuario(e.target.value)}
+                 required
+               />
+               <h1 className="h1">Ingrese el numero de estrellas</h1>
+                 <input
+                 id=""
+                 className="input"
+                 label=""
+                 value ={estrella}
+                 onChange = {e => setEstrella(e.target.value)}
+                 required
+               /><br/>
+               <br/>
+                <button className="button">Ingresar</button>
+               
+           </form>
+           </center>
 
- export const Sesion = ({ handleSubmited}) => {
-
-    const [apodo, setApodo] = useState('')
-
-    let player ={};
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        player.usuario=apodo
-        player.puntuacion=0
-        handleSubmited(player)
-      
-    }
-    return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <input
-                  id=""
-                  label="Ingrese usuario"
-                  value ={apodo}
-                  onChange = {e => setApodo(e.target.value)}
-                  required
-                />
-                 <button>agregar usuario</button>
-            </form>
-
-           
-        </div>
-    )
+          
+       </div>
+   )
 } 
