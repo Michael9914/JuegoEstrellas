@@ -11,7 +11,8 @@ const Inicio = () => {
   const [logeado, setLogeado] = useState(false)
   const [nuevoJugador, setNuevoJugador] = useState(Usuarios)
   const añadirJugador = (jugador) => {
-    setNuevoJugador(...Usuarios, jugador)
+    setNuevoJugador([...Usuarios, jugador])
+    console.log(nuevoJugador);
     setLogeado(true)
   }
   return( 
@@ -22,7 +23,7 @@ const Inicio = () => {
         <Juego key={gameId} startNewGame={() => setGameId(gameId + 1)} 
         nuevoJugador= {nuevoJugador} onSumbited={añadirJugador}/>
       
-      ):(
+      ) :(
       <Sesion setLogeado={setLogeado}
       ></Sesion>
     ) 
