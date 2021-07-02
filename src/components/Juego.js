@@ -53,7 +53,6 @@ export const Juego = props => {
             <div className="help">
                 Elija 1 o más números que sumen la cantidad de estrellas
             </div>
-            <Formulario />
             <div className="body">
                 <div className="left">
                     {gameStatus !== 'active' ? (
