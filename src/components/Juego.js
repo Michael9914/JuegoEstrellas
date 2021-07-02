@@ -5,6 +5,7 @@ import { useGameState } from './Estado';
 import { Empezar } from './Empezar';
 import { utils } from './Utils';
 import { Formulario } from './Formulario';
+import { ListaDeUsuario } from './ListaDeUsuario';
 
 
 
@@ -73,6 +74,7 @@ export const Juego = props => {
                 </div>
             </div>
             <div className="timer">Time Remaining: {secondsLeft}</div>
+              <ListaDeUsuario nuevosJugador={props.nuevoJugador}></ListaDeUsuario>          
         </div>
     );
 };
